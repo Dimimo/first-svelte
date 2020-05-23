@@ -49,7 +49,9 @@ module.exports = {
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: '[name].css'
-		})
+		}),
+		require('tailwindcss'),
+		require('autoprefixer')
 	],
 	devtool: prod ? false: 'source-map'
 };
