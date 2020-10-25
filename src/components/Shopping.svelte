@@ -12,7 +12,7 @@
     function calculate() {
         //total = total + item.price * item.nr;
         total = 0;
-        items.forEach(item => {
+        items.forEach((item) => {
             total = total + item.price * item.nr;
         });
     }
@@ -42,10 +42,10 @@
 
     function sort(array) {
         let x = "",
-                y = "";
+            y = "";
         return array.sort(function (x, y) {
             let a = x.item.toUpperCase(),
-                    b = y.item.toUpperCase();
+                b = y.item.toUpperCase();
             return a === b ? 0 : a > b ? 1 : -1;
         });
     }
@@ -63,7 +63,9 @@
 <ul>
     {#each sort(items) as item, i}
         <li>
-            {item.nr} {item.item} at ${item.price}
+            {item.nr}
+            {item.item}
+            at ${item.price}
             <button on:click={() => (item.nr = addOne(item))}>+</button>
             <button on:click={() => (item.nr = minusOne(item))}>-</button>
             <button on:click={() => remove(i)}>x</button>
@@ -72,10 +74,6 @@
 </ul>
 
 <h3>Bill: {total !== -1 ? total : calculate()}</h3>
-<h4>
-    Net: {bill}
-    <br/>
-    Tax: {tax}
-</h4>
+<h4>Net: {bill} <br /> Tax: {tax}</h4>
 
-<AddItem {items} on:itemAdded={handleItem}/>
+<AddItem {items} on:itemAdded={handleItem} />
